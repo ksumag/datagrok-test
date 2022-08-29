@@ -1,5 +1,6 @@
-FROM python:buster 
+FROM python:alpine
 WORKDIR /app
 COPY app /app/app.py
-RUN pip3 install flask && pip3 install psutil
+RUN apk add build-base linux-headers
+RUN python -m pip install psutil flask
 ENTRYPOINT [ "python3","app.py" ]
