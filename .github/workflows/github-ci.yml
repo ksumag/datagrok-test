@@ -16,13 +16,10 @@ jobs:
        with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
- #    - name: Add SHORT_SHA env property with commit short sha
- #      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-     - name: Set outputs
-       id: vars
-       run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+     - name: Add SHORT_SHA env property with commit short sha
+       run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
      - name: Build and push
        uses: docker/build-push-action@v3
        with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/datagrok-test-metrics:${{ steps.vars.outputs.sha_short }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/datagrok-test-metrics:${{ env.SHORT_SHA }}
