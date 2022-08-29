@@ -20,4 +20,4 @@ jobs:
        uses: docker/build-push-action@v3
        with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/datagrok-test-metrics:${{ GITHUB_SHA }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/datagrok-test-metrics:${{ env.GITHUB_SHA }}
