@@ -4,5 +4,5 @@
 * `app2` metrics container 2
 
 ## Run configuration
-Application entrypoint is `python3 app.py`, run by `docker compose up -d `. 
+Application entrypoint is `python3 app.py`, RUN BY SCRIPT ONLY!! ` chmod +x run.sh  `, then ` ./run.sh  `
 
