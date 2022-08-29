@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:alpine
+    configs:
+        - source: nginx_config
+          target: /etc/nginx/nginx.conf
+    ports: 
+    - "5000:80"
+
+  app1:
+    image: datagrok-test-metrics:v1
+
+  app2:
+    image: datagrok-test-metrics:v1
+      
+configs:
+  nginx_config:
+    file: ./default.conf
+
+
